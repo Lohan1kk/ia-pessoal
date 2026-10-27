@@ -2,7 +2,7 @@
 
 Assistente de inteligência artificial pessoal, com chat em streaming, histórico persistente em SQLite e integração real com a API da OpenAI.
 
-> **Status:** o código foi gerado sem executar `npm install`, `lint`, `typecheck` ou `build` (ambiente sem acesso à internet). Nada aqui foi testado em execução. Rode os comandos da seção [Verificação](#verificação) antes de confiar nele e corrija o que aparecer.
+> **Status:** `lint`, `typecheck` e `build` foram executados com sucesso. Para usar o chat com a OpenAI, configure `OPENAI_API_KEY` conforme a seção [Instalação](#instalação). A integração com a API depende de uma chave válida e de cota disponível.
 
 ## Pré-requisitos
 
@@ -34,7 +34,7 @@ O SQLite fica em `prisma/dev.db` (ignorado pelo Git). Na primeira vez, crie o ba
 npm run db:migrate -- --name init
 ```
 
-Isso gera a pasta `prisma/migrations/`. **Faça commit dela** para que outras pessoas (e o deploy) criem o banco com `npm run db:deploy`.
+A migração inicial já está versionada em `prisma/migrations/`. O banco local é criado/atualizado pelo comando acima; em produção, aplique as migrações versionadas com `npm run db:deploy`.
 
 ## Executar
 
@@ -58,6 +58,8 @@ npm run lint
 npm run typecheck
 npm run build
 ```
+
+Esses comandos foram executados com sucesso. O envio de mensagens e a resposta da OpenAI só podem ser verificados com uma chave de API válida configurada no `.env.local`.
 
 ## Funcionalidades
 
